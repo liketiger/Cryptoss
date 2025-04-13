@@ -91,7 +91,7 @@
 
 ## 배포 사이트
 
-- 배포 사이트: `[...example URL...]`
+- 배포 사이트: `https://cryptoss-five.vercel.app/`
 
 ---
 
