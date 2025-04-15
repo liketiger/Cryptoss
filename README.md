@@ -1,54 +1,107 @@
-# React + TypeScript + Vite
+# Cryptoss (크립토스)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+개인 가상화폐 시세 확인 서비스인 **Cryptoss (크립토스)** 입니다.  
+기존 서비스들에서는 시세 확인 시 로딩, 검색, 광고 등으로 인해 확인까지 시간이 오래 걸리는 문제를 해결하고자 이 프로젝트를 진행합니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 커밋 컨벤션
 
-## Expanding the ESLint configuration
+프로젝트에서 커밋 메시지를 작성할 때는 아래의 컨벤션을 따릅니다:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **init:** 초기 세팅 관련 
+- **feat:** 새로운 기능 추가  
+- **fix:** 버그 수정  
+- **docs:** 문서 수정  
+- **refactor:** 리팩토링 (기능 추가나 버그 수정과 무관한 코드 개선 및 포맷팅)  
+- **test:** 테스트 코드 추가 또는 수정  
+- **chore:** 빌드 작업, 패키지 업데이트 등 기타 마이너한 변경
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 기술 스택
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **프론트엔드:**  
+  - Vite / React / TypeScript  
+  - Emotion, SCSS, StyleX, CSS Modules, Tailwind  
+    - 가벼운 스타일링 고려 및 UI 라이브러리 없이 직접 구현 가능성도 검토
+- **테스트:**  
+  - Vitest (또는 Jest) / React Testing Library (RTL)
+- **라우팅 및 상태 관리:**  
+  - Tanstack Router  
+  - Zustand (또는 jotai)
+- **데이터 관리:**  
+  - Tanstack Query  
+    - 웹 소켓을 이용하여 실시간 데이터를 불러올 경우 캐싱이 필요한지 여부 등 고려
+- **실시간 통신:**  
+  - Socket.IO
+- **반응형 및 레이아웃:**  
+  - media-query (container-query)
+- **브라우저 저장소:**  
+  - IndexedDB (CacheStorage)
+- **PWA (Progressive Web App):**  
+  - 오프라인 지원 및 모바일 최적화를 위한 PWA 적용
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+## 기능 상세 및 PR 계획
+
+### PR 계획
+
+프로젝트 진행은 아래와 같은 주차별 단계로 진행됩니다.
+
+#### **1주차**
+- **프로젝트 기획 및 디자인**  
+  - 토스와 유사한 디자인 참고  
+- **PR 계획 수립**
+
+#### **2주차**
+- **프로젝트 세팅 고도화 및 배포**  
+  - 프로젝트 초기 세팅, ESLint, 기본 라이브러리 설정 등  
+- **공통 컴포넌트 개발**  
+  - 공통 컴포넌트(Button, Input 등) 및 복합 컴포넌트(종목 Avatar) 설계  
+  - 공통 컴포넌트에 대한 테스트 코드 작성  
+- **실시간 차트 페이지 구현**  
+  - 페이지 구조 설계  
+  - 웹소켓 API 연결 및 등락률 변화 로직 구현  
+- **PR:**  
+  - 프로젝트 세팅 마무리, 기본 디자인 시스템 구성 (Color, Font, Border-Radius, Icon 등), 공통 컴포넌트 및 기능 구현
+
+#### **3주차**
+- **목록 상세 페이지 구현**  
+  - 목록 상세 페이지의 UI 구현  
+  - 차트 라이브러리 연결 및 차트 기능 개발  
+  - 캔들 차트에 점선 표시 방식 토글 기능 구현  
+- **PR:**  
+  - 목록 상세 페이지 관련 화면 구현 및 기능 PR
+
+#### **4주차**
+- **종목 편집 페이지 구현 및 PWA 적용**  
+  - 종목 편집 페이지 UI 구현 및 모달 기능 추가  
+  - 종목 리스트 API 연결, 검색 기능 구현, 종목 추가/삭제 기능 구현  
+  - IndexedDB 연결 및 PWA 기능 연동  
+- **PR:**  
+  - 종목 편집 페이지 관련 화면 구현 및 기능 PR
+
+#### **5주차**
+- **미완성 항목 보완**  
+  - 이전 주차에서 구현한 기능의 마무리 작업 및 개선
+
+---
+
+## 배포 사이트
+
+- 배포 사이트: `https://cryptoss-five.vercel.app/`
+
+---
+
+## 추가 참고 사항
+
+- **실시간 데이터 & 캐싱:**  
+  Tanstack Query를 활용한 경우, 웹 소켓을 통해 실시간 데이터를 받아올 때는 캐싱 전략을 재검토해야 합니다. 데이터의 갱신 주기 및 일관성을 고려하여 캐싱 사용 여부를 결정합니다.
+  
+- **UI 구현 방향:**  
+  가능하면 UI 라이브러리 대신 접근성 및 직접 스타일링을 고려하여 자체적으로 컴포넌트를 구현할 예정입니다.
+
+---
+
