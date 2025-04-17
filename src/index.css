@@ -9,7 +9,21 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --color-background: var(--background);
+  --color-background-toss: var(--background-toss);
+  --color-background-toss-secondary: var(--background-toss-secondary);
+  --color-background-toss-bull: var(--background-toss-bull);
+  --color-background-toss-bear: var(--background-toss-bear);
+  --color-background-toss-brand: var(--background-toss-brand);
+  --color-background-toss-tertiary: var(--background-toss-tertiary);
+  --color-background-toss-warn: var(--background-toss-warn);
   --color-foreground: var(--foreground);
+  --color-foreground-toss: var(--text-toss);
+  --color-foreground-toss-secondary: var(--text-toss-secondary);
+  --color-foreground-toss-bull: var(--text-toss-bull);
+  --color-foreground-toss-bear: var(--text-toss-bear);
+  --color-foreground-toss-ticker: var(--text-toss-ticker);
+  --color-icon-toss-success: var(--icon-toss-success);
+  --color-icon-toss-error: var(--icon-toss-error);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -74,6 +88,21 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /* cryptoss design */
+  --background-toss: oklch(0.21 0.0098 285.51);
+  --background-toss-secondary: oklch(0.3 0.018 289.85);
+  --background-toss-bear: oklch(0.47 0.1543 20.34);
+  --background-toss-bull: oklch(0.56 0.1759 258.67);
+  --text-toss: oklch(0.92 0.0013 286.37);
+  --text-toss-bull: oklch(0.64 0.2093 20.66);
+  --text-toss-bear: oklch(0.63 0.1915 258.27);
+  --text-toss-secondary: oklch(0.82 0.0042 286.31);
+  --text-toss-ticker: oklch(0.6 0.0135 285.98);
+  --background-toss-brand: oklch(0.63 0.1915 258.27);
+  --background-toss-warn: oklch(0.64 0.2093 20.98);
+  --background-toss-tertiary: oklch(0.42 0.0197 285.53);
+  --icon-toss-success: oklch(0.71 0.1599 159.43);
+  --icon-toss-error: oklch(0.6 0.2394 26.96);
 }
 
 .dark {
@@ -110,6 +139,9 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@import url("https://static.toss.im/tps/main.css");
+@import url("https://static.toss.im/tps/others.css");
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -117,4 +149,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+* {
+  font-family: "Toss Product Sans", sans-serif;
 }
