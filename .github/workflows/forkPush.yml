@@ -23,7 +23,6 @@ jobs:
           source-directory: 'output'
           destination-github-username: liketiger
           destination-repository-name: Cryptoss
-          target-branch: main
           force: true
           user-email: ${{ secrets.PUBLISH_ACCOUNT_EMAIL }}
           commit-message: ${{ github.event.commits[0].message }}
