@@ -101,6 +101,7 @@
   /* cryptoss design */
   --background-toss: oklch(0.21 0.0098 285.51);
   --background-toss-secondary: oklch(0.3 0.018 289.85);
+  --background-toss-secondary-light: oklch(0.22 0.0116 285.43);
   --background-toss-tertiary: oklch(0.42 0.0197 285.53);
   --background-toss-bear: oklch(0.47 0.1543 20.34);
   --background-toss-bull: oklch(0.56 0.1759 258.67);
