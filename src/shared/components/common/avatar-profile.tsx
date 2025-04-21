@@ -33,7 +33,12 @@ const tickerVariants = cva("font-semibold", {
   },
 });
 
-function AvatarProfile({ src, avatarSize, ticker, tickerSize }: AvatarProfileProps) {
+function AvatarProfile({
+  src,
+  avatarSize,
+  ticker,
+  tickerSize,
+}: AvatarProfileProps) {
   return (
     <div className="flex gap-2">
       <Avatar>
@@ -44,7 +49,9 @@ function AvatarProfile({ src, avatarSize, ticker, tickerSize }: AvatarProfilePro
         />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      <p className={cn(tickerVariants({ size: tickerSize }))}>{ticker}</p>
+      <p className={cn("flex-center", tickerVariants({ size: tickerSize }))}>
+        {ticker}
+      </p>
     </div>
   );
 }

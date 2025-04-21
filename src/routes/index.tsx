@@ -22,11 +22,11 @@ function Index() {
             <span>종목 추가</span>
           </Button>
         </div>
-        <div className="flex-center">
+        <div className="flex justify-end">
           <CurrencySwitch leftText={DOLLAR} rightText={WON} />
         </div>
       </header>
-      <main>
+      <main className="pt-4">
         <LiveChartTable />
       </main>
     </div>
