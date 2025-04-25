@@ -14,6 +14,7 @@
   --color-background: var(--background);
   --color-background-toss: var(--background-toss);
   --color-background-toss-secondary: var(--background-toss-secondary);
+  --color-background-toss-secondary-light: var(--background-toss-secondary-light);
   --color-background-toss-tertiary: var(--background-toss-tertiary);
   --color-background-toss-bull: var(--background-toss-bull);
   --color-background-toss-bear: var(--background-toss-bear);
@@ -23,6 +24,7 @@
   --color-foreground: var(--foreground);
   --color-foreground-toss: var(--text-toss);
   --color-foreground-toss-secondary: var(--text-toss-secondary);
+  --color-foreground-toss-tertiary: var(--text-toss-tertiary);
   --color-foreground-toss-bull: var(--text-toss-bull);
   --color-foreground-toss-bear: var(--text-toss-bear);
   --color-foreground-toss-ticker: var(--text-toss-ticker);
@@ -101,6 +103,7 @@
   /* cryptoss design */
   --background-toss: oklch(0.21 0.0098 285.51);
   --background-toss-secondary: oklch(0.3 0.018 289.85);
+  --background-toss-secondary-light: oklch(0.22 0.0116 285.43);
   --background-toss-tertiary: oklch(0.42 0.0197 285.53);
   --background-toss-bear: oklch(0.47 0.1543 20.34);
   --background-toss-bull: oklch(0.56 0.1759 258.67);
@@ -110,6 +113,7 @@
   --text-toss-bull: oklch(0.64 0.2093 20.66);
   --text-toss-bear: oklch(0.63 0.1915 258.27);
   --text-toss-secondary: oklch(0.82 0.0042 286.31);
+  --text-toss-tertiary: oklch(0.7 0.0086 286.17);
   --text-toss-ticker: oklch(0.6 0.0135 285.98);
   --icon-toss-success: oklch(0.71 0.1599 159.43);
   --icon-toss-error: oklch(0.6 0.2394 26.96);
