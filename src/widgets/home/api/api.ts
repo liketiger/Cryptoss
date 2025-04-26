@@ -1,3 +1,4 @@
 export const homePageUrl = {
-    binanceWsUrl: (streams: string) => `wss://stream.binance.com:9443/stream?streams=${streams}`
+  coinGeckoUrl: (ticker: string) =>
+    `https://api.coingecko.com/api/v3/search?query=${ticker}`,
 };

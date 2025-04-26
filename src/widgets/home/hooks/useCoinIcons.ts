@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { SearchCoin } from "../types";
+import { homePageUrl } from "../api/api";
+import { STABLE_COIN } from "../lib/constants";
 
 type IconMap = Record<string, string>;
 
@@ -9,19 +11,19 @@ function useCoinIcons(symbols: string[]) {
 
   useEffect(() => {
     if (symbols.length === 0) return;
-    const bases = symbols.map((symbol) =>
-      symbol.replace(/usdc$/i, "").toLowerCase()
+    const tickers = symbols.map((symbol) =>
+      symbol.replace(new RegExp(`${STABLE_COIN}$`), "").toLowerCase()
     );
 
     async function fetchIcons() {
       try {
-       const entries: [string, string][] = await Promise.all(
-          bases.map(async (base) => {
+        const entries: [string, string][] = await Promise.all(
+          tickers.map(async (ticker) => {
             const res = await axios.get<{ coins: SearchCoin[] }>(
-              `https://api.coingecko.com/api/v3/search?query=${base}`
+              homePageUrl.coinGeckoUrl(ticker)
             );
             const coin = res.data.coins[0];
-            return [base, coin.large ?? '']
+            return [ticker, coin.large ?? ""];
           })
         );
 

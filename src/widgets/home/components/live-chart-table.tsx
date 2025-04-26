@@ -10,6 +10,7 @@ import {
 import { cn } from "@/shared/lib/utils";
 import useCoinIcons from "../hooks/useCoinIcons";
 import useBinanceTickerInfo from "../hooks/useBinanceTickerInfo";
+import { STABLE_COIN } from "../lib/constants";
 
 const symbols = [
   "btcusdc",
@@ -51,8 +52,10 @@ function LiveChartTable() {
             >
               <TableCell>
                 <AvatarProfile
-                  src={icons[symbol.replace(/usdc/, '')] ?? ""}
-                  ticker={symbol.toUpperCase().replace("USDC", "/USDC")}
+                  src={icons[symbol.replace(STABLE_COIN, "")] ?? ""}
+                  ticker={symbol
+                    .toUpperCase()
+                    .replace(STABLE_COIN, `/${STABLE_COIN}`)}
                 />
               </TableCell>
               <TableCell className="text-right">{info?.price ?? "-"}</TableCell>

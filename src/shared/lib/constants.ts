@@ -1,2 +1,2 @@
-export const DOLLAR = '$'
-export const WON = '원'
+export const DOLLAR = "$";
+export const WON = "원";
