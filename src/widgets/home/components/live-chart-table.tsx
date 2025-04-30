@@ -14,6 +14,7 @@ import { homePageUrl } from "../api/api";
 import useUsdKrwExchangeRate from "@/shared/hooks/useUsdKrwExchangeRate";
 import useCurrencyExchangeStore from "../../../shared/store";
 import Blink from "./blink";
+import { useNavigate } from "@tanstack/react-router";
 
 const symbols = [
   "btcusdc",
@@ -29,7 +30,8 @@ export default function LiveChartTable() {
   const tickerInfo = useBinanceTickerInfo(symbols);
   const usdKrw = useUsdKrwExchangeRate();
   const isKrw = useCurrencyExchangeStore((state) => state.isKrw);
-  
+  const navigate = useNavigate();
+
   return (
     <Table>
       <TableHeader>
@@ -47,7 +49,7 @@ export default function LiveChartTable() {
         )}
         {symbols.map((symbol, index) => {
           const info = tickerInfo[symbol];
-          const pctChange = info?.changePct ? parseFloat(info.changePct) : 0;
+          const changePct = info?.changePct ? parseFloat(info.changePct) : 0;
           const krwPrice = info?.price
             ? `${Math.trunc(parseFloat(info.price) * (usdKrw ?? 1)).toLocaleString()}원`
             : "-";
@@ -58,9 +60,17 @@ export default function LiveChartTable() {
             <TableRow
               key={symbol + index}
               className={cn(
-                "text-foreground-toss",
+                "text-foreground-toss cursor-pointer",
                 (index + 1) % 2 !== 0 && "bg-background-toss-secondary/50"
               )}
+              tabIndex={0}
+              role="button"
+              onClick={() =>
+                navigate({
+                  to: "/ticker-details/$detailId",
+                  params: { detailId: symbol },
+                })
+              }
             >
               <TableCell>
                 <AvatarProfile
@@ -74,17 +84,17 @@ export default function LiveChartTable() {
                 <p className="text-toss-lg">{isKrw ? krwPrice : usdPrice}</p>
               </TableCell>
               <TableCell className="h-[44px]">
-                <Blink pctChange={pctChange}>
+                <Blink changePct={changePct}>
                   <p
                     className={cn(
                       "pr-2 text-toss-lg",
-                      pctChange > 0
+                      changePct > 0
                         ? "text-foreground-toss-bull"
                         : "text-foreground-toss-bear"
                     )}
                   >
                     {info?.changePct
-                      ? `${pctChange > 0 ? "+" : ""}${pctChange.toFixed(1)}%`
+                      ? `${changePct > 0 ? "+" : ""}${changePct.toFixed(1)}%`
                       : "-"}
                   </p>
                 </Blink>
